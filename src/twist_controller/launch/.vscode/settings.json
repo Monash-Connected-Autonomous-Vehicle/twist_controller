@@ -1,0 +1,14 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/david/repos/twist_controller/install/teleop_twist_keyboard/lib/python3.10/site-packages",
+        "/home/david/repos/twist_controller/install/twist_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/david/repos/twist_controller/install/teleop_twist_keyboard/lib/python3.10/site-packages",
+        "/home/david/repos/twist_controller/install/twist_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
