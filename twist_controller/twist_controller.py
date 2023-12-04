@@ -13,14 +13,14 @@ def main():
     twist_msg.header.stamp = node.get_clock().now().to_msg()
 
     print("Enter twist.linear.x and twist.angular.z values to publish to /twist_cmd topic.")
-    print("Press Enter to keep the current value.")
+    print("Press Enter (without a number) to use last re-publish last twist value.")
     print("Press Ctrl+C to stop the program.\n")
 
     last_linear_x = 0
     last_angular_z = 0
 
     while True:
-        
+        # Print d
         linear_x = input("Enter twist.linear.x value: ")
         angular_z = input("Enter twist.angular.z value: ")
 
@@ -38,7 +38,7 @@ def main():
             twist.angular.z = angular_z
             
             pub.publish(twist_msg, )
-            print(f"Published values: twist.linear.x = {linear_x}, twist.angular.z = {angular_z}")
+            print(f"Published values: twist.linear.x = {linear_x}, twist.angular.z = {angular_z}\n")
 
             last_linear_x = linear_x
             last_angular_z = angular_z
