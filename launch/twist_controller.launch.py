@@ -28,7 +28,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'sd_simulation_mode',
-            default_value='true',
+            default_value='false',
             description='Use on car on on simulation',
         ),
 
