@@ -1,4 +1,7 @@
-from setuptools import find_packages, setup
+from setuptools import setup, find_packages
+from glob import glob
+import os
+
 
 package_name = 'twist_controller'
 
@@ -10,6 +13,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name), glob('launch/*.launch.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -20,6 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'twist_controller = twist_controller.twist_controller:main'
         ],
     },
 )
