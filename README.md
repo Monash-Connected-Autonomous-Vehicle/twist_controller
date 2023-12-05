@@ -10,11 +10,12 @@ ROS 2 Package to efficiently send twist messages to the Twizy via the command li
 
 - To launch `sd_vehicle_interface`, `foxglove_bridge` and/or this node: 
 	- `ros2 launch twist_controller twist_controller.launch.py`
-	- If there is an error, ensure `gnome-terminal` is installed:
+	- Note: if you're in a docker container, a new terminal won't launch. You'll have to additionally launch `ros2 run twist_controller twist_controller` in a new terminal
+	- If you're not using a docker container and there is an error in launching, ensure `gnome-terminal` is installed:
 		- `sudo apt update`
 		- `sudo apt -y install gnome-terminal libcanberra-gtk-module libcanberra-gtk3-module dbus-x11`
-	- If errors continue to occur, or you do not want to use `gnome-terminal`, set the `twist_terminal` argument to `false`:
-		- `ros2 launch twist_controller twist_controller.launch.py twist_terminal:=true`
+	- If errors persist, or you do not want to use `gnome-terminal`, set the `twist_terminal` argument to `false`:
+		- `ros2 launch twist_controller twist_controller.launch.py twist_terminal:=false`
 
 Following arguments when using `ros2 launch`:
 
@@ -25,4 +26,4 @@ Following arguments when using `ros2 launch`:
 | launch_foxglove    | {true, false}                             | false     | Launch foxglove bridge                     |
 | twist_terminal     | {true, false}                             | true      | Create new terminal for twist controlling  |
 
-- Arguments are enter in this format: `ros2 launch twist_controller twist_controller.launch.py sd_simulation_mode:=false` 
+- Arguments are entered in this format: `ros2 launch twist_controller twist_controller.launch.py sd_simulation_mode:=false` 
