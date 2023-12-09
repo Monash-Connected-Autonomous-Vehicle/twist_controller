@@ -1,4 +1,5 @@
 import os
+from launch.actions import ExecuteProcess
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.conditions import IfCondition
@@ -13,7 +14,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'twist_terminal',
-            default_value='true',
+            default_value='false',
             description='Launch twist terminal',
         ),
 
@@ -69,4 +70,16 @@ def generate_launch_description():
             launch_arguments={'port': LaunchConfiguration('port')}.items(),
             condition=IfCondition(LaunchConfiguration('launch_foxglove'))
         ),
+
+        DeclareLaunchArgument(
+            'record',
+            default_value='false',
+            description='Record bag file of twist_cmd and sd_current_twist',
+        ),
+
+        ExecuteProcess(
+            cmd=['ros2', 'bag', 'record', '/twist_cmd', '/sd_current_twist'],
+            output='screen',
+            condition=IfCondition(LaunchConfiguration('record'))
+        )
     ])
