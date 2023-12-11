@@ -35,7 +35,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'sd_speed_source',
-            default_value='ndt_speed',
+            default_value='vehicle_can_speed',
             description='Input Vehicle Speed',
         ),
 
