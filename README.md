@@ -16,7 +16,7 @@ Following arguments when using `ros2 launch`:
 
 | arg                | values                                    | default   | description                                |
 | ------------------ | ----------------------------------------- | --------- | ------------------------------------------ |
-| sd_speed_source    | {vehicle_can_speed, imu_speed, ndt_speed} | ndt_speed | Input vehicle speed                        |
+| sd_speed_source    | {vehicle_can_speed, imu_speed, ndt_speed} | vehicle_can_speed | Input vehicle speed                        |
 | sd_simulation_mode | {true, false}                             | false      | Use on the car or on the Gazebo simulation |
 | launch_foxglove    | {true, false}                             | true     | Launch foxglove bridge                     |
 | twist_terminal     | {true, false}                             | false      | Create new terminal for twist controlling  |
@@ -24,6 +24,12 @@ Following arguments when using `ros2 launch`:
 
 - Arguments are entered using `<arg_description>`:=`<value>`. E.g. `ros2 launch twist_controller twist_controller.launch.py sd_simulation_mode:=true` 
 
+
+### Bugs
+#### `twist_cmd` not shown on foxglove
+- This error seems to go away whenever the twist_controller node is launch before or at the same time as the launch file
+
+#### Launch file not automatically launching new terminal
 - Note: if you're in a docker container, `twist_terminal`:=`true` will not work. You'll have to `ros2 run twist_controller twist_controller` in a new terminal
 - If you're not using a docker container and there is an error in launching, ensure `gnome-terminal` is installed:
 	- `sudo apt update`
