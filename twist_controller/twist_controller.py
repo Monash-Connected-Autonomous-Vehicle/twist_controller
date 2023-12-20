@@ -1,50 +1,47 @@
 import rclpy
-import geometry_msgs.msg
+from autoware_auto_control_msgs.msg import AckermannControlCommand
 
 def main():
+    DEG_TO_RAD = 0.01745329252
     rclpy.init()
     node = rclpy.create_node('twist_controller_node')
-    TwistMsg = geometry_msgs.msg.TwistStamped
-    pub = node.create_publisher(TwistMsg, 'twist_cmd', 10)
+    Ackermann = AckermannControlCommand
+    pub = node.create_publisher(Ackermann, 'ackermann_cmd', 10)
 
-    twist_msg = TwistMsg()
+    ack_msg = Ackermann()
 
-    twist = twist_msg.twist
-    twist_msg.header.stamp = node.get_clock().now().to_msg()
 
-    print("Enter twist.linear.x and twist.angular.z values to publish to /twist_cmd topic.")
-    print("Press Enter (without a number) to use last re-publish last twist value.")
+    print("Enter speed and angle values to publish to /ackermann_cmd topic.")
+    print("Press Enter (without a number) to use last re-publish last ackermann command.")
     print("Press Ctrl+C to stop the program.\n")
 
-    last_linear_x = 0
-    last_angular_z = 0
+    last_speed = 0
+    last_angle = 0
 
     while True:
-        # Print d
-        linear_x = input("Enter twist.linear.x value: ")
-        angular_z = input("Enter twist.angular.z value: ")
+        speed = input("Enter speed (m/s) value: ")
+        angle = input("Enter tire angle (degrees, positive = left steer): ")
 
-        if linear_x == "":
-            linear_x = last_linear_x
+        if speed == "":
+            speed = last_speed
 
-        if angular_z == "":
-            angular_z = last_angular_z
+        if angle == "":
+            angle = last_angle
 
         try:
-            linear_x = float(linear_x)
-            angular_z = float(angular_z)
-            twist_msg.header.stamp = node.get_clock().now().to_msg()
-            twist.linear.x = linear_x
-            twist.angular.z = angular_z
+            speed = float(speed)
+            angle = float(angle)
+            ack_msg.longitudinal.speed = speed
+            ack_msg.lateral.steering_tire_angle = angle * DEG_TO_RAD
             
-            pub.publish(twist_msg, )
-            print(f"Published values: twist.linear.x = {linear_x}, twist.angular.z = {angular_z}\n")
+            pub.publish(ack_msg, )
+            print(f"Published values: speed = {speed}, angle = {angle}\n")
 
-            last_linear_x = linear_x
-            last_angular_z = angular_z
+            last_speed = speed
+            last_angle = angle
             
         except ValueError:
-            print("Invalid input. Please enter numeric values for twist.linear.x and twist.angular.z.")
+            print("Invalid input. Please enter numeric values for speed and angle.")
 
 
 if __name__ == '__main__':
