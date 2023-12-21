@@ -6,7 +6,7 @@ from builtin_interfaces.msg import Time
 def main():
     DEG_TO_RAD = 0.01745329252
     rclpy.init()
-    node = rclpy.create_node('twist_controller_node')
+    node = rclpy.create_node('ackermann_controller_node')
     Ackermann = AckermannControlCommand
     pub = node.create_publisher(Ackermann, 'ackermann_cmd', 10)
 
