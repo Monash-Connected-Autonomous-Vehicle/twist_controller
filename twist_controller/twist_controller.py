@@ -1,5 +1,7 @@
 import rclpy
 from autoware_auto_control_msgs.msg import AckermannControlCommand
+from builtin_interfaces.msg import Time
+
 
 def main():
     DEG_TO_RAD = 0.01745329252
@@ -9,7 +11,6 @@ def main():
     pub = node.create_publisher(Ackermann, 'ackermann_cmd', 10)
 
     ack_msg = Ackermann()
-
 
     print("Enter speed and angle values to publish to /ackermann_cmd topic.")
     print("Press Enter (without a number) to use last re-publish last ackermann command.")
@@ -33,6 +34,10 @@ def main():
             angle = float(angle)
             ack_msg.longitudinal.speed = speed
             ack_msg.lateral.steering_tire_angle = angle * DEG_TO_RAD
+            
+            timestamp = Time()
+            timestamp.sec, timestamp.nanosec = rclpy.clock.Clock().now().seconds_nanoseconds()
+            ack_msg.stamp = timestamp
             
             pub.publish(ack_msg, )
             print(f"Published values: speed = {speed}, angle = {angle}\n")
