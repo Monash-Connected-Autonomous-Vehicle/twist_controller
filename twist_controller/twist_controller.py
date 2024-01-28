@@ -8,11 +8,11 @@ def main():
     rclpy.init()
     node = rclpy.create_node('ackermann_controller_node')
     Ackermann = AckermannControlCommand
-    pub = node.create_publisher(Ackermann, 'ackermann_cmd', 10)
+    pub = node.create_publisher(Ackermann, 'control/command/control_cmd', 10)
 
     ack_msg = Ackermann()
 
-    print("Enter speed and angle values to publish to /ackermann_cmd topic.")
+    print("Enter speed and angle values to publish to /control/command/control_cmd topic.")
     print("Press Enter (without a number) to use last re-publish last ackermann command.")
     print("Press Ctrl+C to stop the program.\n")
 

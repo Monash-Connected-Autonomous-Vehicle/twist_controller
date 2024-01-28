@@ -10,7 +10,7 @@
         },
         {
           "timestampMethod": "receiveTime",
-          "value": "/ackermann_cmd.longitudinal.speed",
+          "value": "/control/command/control_cmd.longitudinal.speed",
           "enabled": true
         }
       ],
