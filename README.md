@@ -24,7 +24,7 @@ Following arguments when using `ros2 launch`:
 
 - Arguments are entered using `<arg_description>`:=`<value>`. E.g. `ros2 launch twist_controller twist_controller.launch.py sd_simulation_mode:=true` 
 
-### Set up for Testing SD-VehicleInterface with Twist Controlled
+### Set up for Testing SD-VehicleInterface with Twist Controller
 
 After creating a ROS2 workspace, clone [twist_controller](https://github.com/Monash-Connected-Autonomous-Vehicle/twist_controller), [SD-VehicleInterface](https://github.com/Monash-Connected-Autonomous-Vehicle/SD-VehicleInterface/tree/main) into `src`
 
