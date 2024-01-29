@@ -40,7 +40,7 @@ sudo ip link set down can0 && sudo ip link set can0 up type can bitrate 500000
 - Launch SD-VehicleInterface:
 ```
 source install/setup.bash
-ros2 run twist_controller twist_controller
+ros2 launch twist_controller twist_controller.launch.py
 ```
 - After launching, you should see the following: The red light in the car should stop blinking. At this time you turn the knob clockwise to turn on Autonomous Mode.
 - Note: Output of `cpp` files will be found in this terminal
