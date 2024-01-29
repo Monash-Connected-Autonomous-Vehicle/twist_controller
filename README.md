@@ -26,10 +26,10 @@ Following arguments when using `ros2 launch`:
 
 ### Set up for Testing SD-VehicleInterface with Twist Controller
 
-After creating a ROS2 workspace, clone [twist_controller](https://github.com/Monash-Connected-Autonomous-Vehicle/twist_controller), [SD-VehicleInterface](https://github.com/Monash-Connected-Autonomous-Vehicle/SD-VehicleInterface/tree/main) into `src`
+After creating a ROS2 workspace, clone [twist_controller](https://github.com/Monash-Connected-Autonomous-Vehicle/twist_controller) & [SD-VehicleInterface](https://github.com/Monash-Connected-Autonomous-Vehicle/SD-VehicleInterface/tree/main) into `src`
 
 If you want to test Autoware msgs, ensure you clone the correct Ackermann branches and do the following:
-Clone [Autoware Auto Msgs](https://github.com/tier4/autoware_auto_msgs) into `src`
+Clone [Autoware Auto Msgs](https://github.com/tier4/autoware_auto_msgs) & [ros2_socketcan](git@github.com:autowarefoundation/ros2_socketcan.git) into `src`
 Install correct version of setuptools
 ```python
 pip install setuptools==58.2.0
@@ -38,7 +38,7 @@ pip install setuptools==58.2.0
 Install foxglove bridge and can_msgs:
 ```bash
 source /opt/ros/humble/setup.bash
-sudo apt-get install ros-humble-socketcan-interface ros-humble-can-msgs
+sudo apt-get install ros-humble-can-msgs
 sudo apt install ros-$ROS_DISTRO-foxglove-bridge
 ```
 
