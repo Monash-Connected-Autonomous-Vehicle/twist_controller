@@ -25,7 +25,7 @@ sudo apt install ros-$ROS_DISTRO-foxglove-bridge
 ### Using SD-VehicleInterface with Twist Controller (The following is mainly for the Twizy)
 - View bugs section if you encounter any errors (end of README)
 - Follow [the *Running the demo* steps](https://www.notion.so/monashcav/Hardware-in-the-Loop-Demo-4eb8536a21734a2da9ecee6120d6be9f?pvs=4#5bb39aa187f34f40bfd06b62536a3b0c) up to step 5. (Steps 4-5 are often already done)
-- go to `~/<workspace>/src`
+- go to `~/<workspace>/src` (currently `~/test_sd/ask_ws` in Alienware Laptop)
 
 Terminal 1:
 - Ensure PEAK CAN is connected, light should be blinking red after running the following command: 
@@ -41,12 +41,12 @@ export ROS_DOMAIN_ID=2
 - Launch SD-VehicleInterface:
 ```
 source install/setup.bash
-ros2 run twist_controller twist_controller
+ros2 launch  twist_controller twist_controller.launch.py
 ```
 - After launching, you should see the following: The red light in the car should stop blinking. At this time you turn the knob clockwise to turn on Autonomous Mode.
 - Note: Output of `cpp` files will be found in this terminal
 
-Terminal 2 (ignore for Carla X Autoware):
+Terminal 2 (ignore if doing Carla X Autoware):
 - Run Twist controller:
 ```
 source install/setup.bash
