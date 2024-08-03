@@ -1,5 +1,5 @@
 import rclpy
-from autoware_auto_control_msgs.msg import AckermannControlCommand
+from autoware_control_msgs.msg import Control
 from builtin_interfaces.msg import Time
 
 
@@ -7,7 +7,7 @@ def main():
     DEG_TO_RAD = 0.01745329252
     rclpy.init()
     node = rclpy.create_node('ackermann_controller_node')
-    Ackermann = AckermannControlCommand
+    Ackermann = Control
     pub = node.create_publisher(Ackermann, 'control/command/control_cmd', 10)
 
     ack_msg = Ackermann()
@@ -32,7 +32,7 @@ def main():
         try:
             speed = float(speed)
             angle = float(angle)
-            ack_msg.longitudinal.speed = speed
+            ack_msg.longitudinal.velocity = speed
             ack_msg.lateral.steering_tire_angle = angle * DEG_TO_RAD
             
             timestamp = Time()
