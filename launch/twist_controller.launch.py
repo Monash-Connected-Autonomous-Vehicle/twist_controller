@@ -28,6 +28,12 @@ def generate_launch_description():
         ),
 
         DeclareLaunchArgument(
+            'sd_vehicle',
+            default_value='twizy',
+            description='the vehicle under control, env200 or twizy',
+        ),
+
+        DeclareLaunchArgument(
             'sd_simulation_mode',
             default_value='false',
             description='Use on car on on simulation',
@@ -45,6 +51,7 @@ def generate_launch_description():
                 'launch/sd_vehicle_interface.launch.xml'
             )),
             launch_arguments={
+                'sd_vehicle': LaunchConfiguration('sd_vehicle'),
                 'sd_simulation_mode': LaunchConfiguration('sd_simulation_mode'),
                 'sd_speed_source': LaunchConfiguration('sd_speed_source'),
             }.items(),
@@ -52,7 +59,7 @@ def generate_launch_description():
 
         DeclareLaunchArgument(
             'launch_foxglove',
-            default_value='true',
+            default_value='false',
             description='Launch foxglove bridge',
         ),
 
